@@ -1,0 +1,357 @@
+/* app/page.module.css */
+
+/* --- VARIÁVEIS DE COR --- */
+:root {
+    /* Cores de status */
+    --status-watched: #4CAF50; /* Verde */
+    --status-watching: #FFC107; /* Amarelo */
+    --status-want-to-watch:#2c1bc7;
+    
+    /* Cores de fundo e texto */
+    --background-color: whitesmoke;
+    --dark-background: #0e0e0e;
+    --primary-color: rgb(84, 4, 121); /* Vermelho do header */
+    --text-light: whitesmoke;
+    --text-dark: #333;
+    color: #000000;
+}
+
+
+/* --- GERAL --- */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: var(--primary-color);
+    color: whitesmoke;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+
+/* --- FORMULÁRIO DE ADIÇÃO (MediaForm) --- */
+
+/* Unificado: Estiliza o wrapper externo e centraliza */
+.formSection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* Estilos internos do formContainer (o formulário em si) */
+.formContainer { 
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    background-color: black;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.formContainer h2 {
+    color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-light); /* Cor do label no fundo escuro */
+}
+
+.formGroup input, 
+.formGroup select {
+    width: 100%;
+    padding: 10px;
+    border: 5px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #443939; /* Fundo do input mais escuro */
+    color: var(--text-light);
+}
+
+.submitButton {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--status-watched); /* Verde para o botão principal */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+.submitButton:hover {
+    background-color: #3d8a41; /* Verde um pouco mais escuro no hover */
+}
+
+/* Mensagens */
+.successMessage {
+    padding: 10px;
+    background-color: #d4edda;
+    color: #2ec050;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.errorMessage {
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* --- SEÇÃO DE LISTA --- */
+
+.sectionTitle {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+}
+
+/* Grid das Mídias */
+.mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+/* --- CARD INDIVIDUAL (MediaCard) --- */
+
+.mediaCard {
+    border: 5px solid #0c0000;
+    border-radius: 10px;
+    /* Removido o padding para deixar a imagem tomar o topo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    overflow: hidden; /* Importante para a imagem */
+    transition: transform 0.2s;
+}
+
+.mediaCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 0;
+    position: relative;
+    overflow: hidden;
+    /* margin-bottom: 10px; Removido para que a imagem encoste na borda superior */
+}
+
+.mediaImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Placeholder se não houver URL */
+.placeholderImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px 0;
+    background-color: #f5dbdb;
+    color: #999;
+    font-size: 3em;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Conteúdo abaixo da imagem */
+.mediaHeader {
+    display: flex;
+    align-items: flex-start; /* Alinha o topo do título */
+    justify-content: space-between;
+    padding: 10px 15px 5px; /* Adicionado padding para o conteúdo */
+}
+
+.mediaIndex {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-right: 10px;
+    flex-shrink: 0; /* Não permite que o índice encolha */
+}
+.mediaTitle {
+    flex-grow: 1;
+    margin: 0;
+    font-size: 1.2em; 
+    font-weight: 600;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Permite que o título quebre linha se necessário */
+}
+
+/* Status Labels */
+.mediaStatus {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: rgb(12, 12, 12);
+    white-space: nowrap;
+    margin-left: 10px;
+    align-self: flex-start; /* Garante que fique no topo */
+}
+
+.statusGreen {
+    background-color: teal; /* Assistido */
+     color: white;
+}
+
+.statusYellow {
+    background-color: #cc6479; /* A Assistir */
+    color: white;
+}
+
+.statusBlue {
+    background-color: brown;/* Quero Ver */
+    color: white;
+}
+
+.mediaDetails {
+    padding: 0 15px 15px; /* Padding inferior */
+}
+
+.mediaDetails p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #050000;
+}
+
+/* app/page.module.css (Adicione estes estilos) */
+
+/* Contêiner para rolagem em telas pequenas */
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    color: var(--dark-background);
+}
+
+.mediaTable {
+    width: 100%;
+    border-collapse: collapse;
+    /* Estilos de fonte/layout da tabela principal */
+}
+
+.mediaTable th, 
+.mediaTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #000000; /* Linhas de separação */
+}
+
+/* Estilo para o cabeçalho, conforme a imagem */
+.mediaTable thead tr {
+    background-color: rgb(84, 4, 121); /* Cinza claro */
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Estilo para a linha (index) */
+.mediaTable td:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Estilo para a célula de Capa */
+.tableImageCell {
+    width: 60px; /* Tamanho fixo para o container */
+}
+
+.tableImage {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px; /* Opcional: borda arredondada */
+}
+
+/* Estilo para o placeholder da Capa (Letra inicial) */
+.placeholderCell {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular */
+    background-color: #333; /* Fundo escuro */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.actionCell {
+    white-space: nowrap; /* Garante que os botões fiquem na mesma linha */
+}
+
+/* --- Estilos para os Botões (VERDE e VERMELHO) --- */
+
+.editButtonGreen,
+.deleteButtonRed {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 8px; /* Espaçamento entre botões */
+    transition: background-color 0.2s;
+    font-size: 0.85rem;
+}
+
+.editButtonGreen {
+    background-color: #13aa18; /* Verde */
+    color: white;
+}
+
+.editButtonGreen:hover {
+    background-color: #13aa18;
+}
+
+.deleteButtonRed {
+    background-color: #c90909; /* Vermelho */
+    color: white;
+}
+
+.deleteButtonRed:hover {
+    background-color: #c90909;
+}
